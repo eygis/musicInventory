@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <form method='POST' action=''>
+        <div>
+            <label for='instrument_type'>
+                Type: <input type='text' placeholder='new instrument type' name='instrument_type' value='<%= !instrument ? "" : instrument.type %>'>
+            </label>
+            <label for='instrument_family'>
+                Instrument Family: <select type='select' name='instrument_family' required='true'>
+                    <% for (let family of families) { %>
+                    <option value='<%= family._id %>' <%= instrument && instrument.family.family_name == family.family_name ? 'selected' : '' %>><%= family.family_name %></option>
+                    <% } %>
+                </select>
+            </label>
+            <label for='instrument_maker'>
+                Instrument Maker: <select type='select' name='instrument_maker' required='true'>
+                    <% for (let maker of makers) { %>
+                    <option value='<%= maker._id %>' <%= instrument && instrument.maker.company_name == maker.company_name ? 'selected' : '' %>><%= maker.company_name %></option>
+                    <% } %>
+                </select>
+            </label>
+            <button type='submit'>Submit</button>
+            <% if (errors) { %>
+                <h3>Errors:</h3>
+                <ul>
+                    <% for (let error of errors) { %>
+                    <li><%= error.msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

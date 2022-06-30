@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <h2>Id: <%= instance._id %></h2>
+      <h3><a href='<%= instance.instrument.url %>'><%= instance.instrument.type %></a></h3>
+      <p>Maker: <a href='<%= instance.instrument.maker.url %>'><%= instance.instrument.maker.company_name %></a></p>
+      <p>Status: <%= instance.status %></p>
+      <p>Notes: <%= instance.notes %></p>
+      <hr>
+      <p><a href='<%= instance.url + "/delete"%>'>Delete Instance</a></p>
+      <p><a href='<%= instance.url + "/update"%>'>Update Instance</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <ul>
+        <% instrument_list.forEach(instrument => { %>
+            <li><a href='<%= instrument.url %>'><%= instrument.type %></a> - <%= instrument.maker.company_name %></li>
+        <% }); %>     
+      </ul>
+    </div>
+  </body>
+</html>

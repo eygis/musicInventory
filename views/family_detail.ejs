@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <h2><%= family.family_name %></h2>
+      <% if (family_instruments.length > 0) { %>
+      <ul>
+        <% family_instruments.forEach(instrument => { %>
+        <li><a href='<%= instrument.url %>'><%= instrument.type %></a> - <%= instrument.maker.company_name %></li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+        <p>This family has no instruments in stock.</p>
+      <% } %>
+      <hr>
+      <p><a href='<%= family.url + "/delete"%>'>Delete Family</a></p>
+      <p><a href='<%= family.url + "/update"%>'>Update Family</a></p>
+    </div>
+  </body>
+</html>

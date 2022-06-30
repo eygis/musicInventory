@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <form method='POST' action=''>
+        <div>
+            <label for='instance_instrument'>
+                Instrument Type: <select type='select' placeholder='Select instrument' name='instance_instrument' required='true'>
+                    <% for (let instrument of instruments) { %>
+                    <option value='<%= instrument._id %>' <%= instance && instance.instrument.type == instrument.type ? 'selected' : '' %>><%= instrument.type %> - <%= instrument.maker.company_name %></option>
+                    <% } %>
+                </select>
+            </label>
+            <label for='instance_status'>
+                Status: <select type='select' name='instance_status' required='true'>
+                    <option value='Ok-Showroom' <%= instance && instance.status == 'Ok-Showroom' ? 'selected' : '' %>>Ok-Showroom</option>
+                    <option value='Ok-Backroom' <%= instance && instance.status == 'Ok-Backroom' ? 'selected' : '' %>>Ok-Backroom</option>
+                    <option value='Maintenance' <%= instance && instance.status == 'Maintenance' ? 'selected' : '' %>>Maintenance</option>
+                    <option value='Irreparable' <%= instance && instance.status == 'Irreparable' ? 'selected' : '' %>>Irreparable</option>
+                </select>
+            </label>
+            <label for='instance_notes'>
+                Notes: <textarea placeholder='notes' name='instance_notes' maxlength='200'><%= !instance ? "" : instance.notes %></textarea>
+            </label>
+            <button type='submit'>Submit</button>
+            <% if (errors) { %>
+                <h3>Errors:</h3>
+                <ul>
+                    <% for (let error of errors) { %>
+                    <li><%= error.msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

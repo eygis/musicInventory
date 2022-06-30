@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <form method='POST' action=''>
+        <div>
+            <label for='family_name'>
+                Name: <input type='text' placeholder='Brass, Woodwind, etc.' name='family_name' value='<%= !family ? "" : family.family_name %>'>
+                <button type='submit'>Submit</button>
+            </label>
+            <% if (errors) { %>
+                <h3>Errors:</h3>
+                <ul>
+                    <% for (let error of errors) { %>
+                    <li><%= error.msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <form method='POST' action=''>
+        <div>
+            <label for='company_name'>
+                Name: <input type='text' placeholder='new maker name' name='company_name' value='<%= !maker ? "" : maker.company_name %>'>
+            </label>
+            <label for='date_of_founding'>
+                Date of Founding: <input type='date' name='date_of_founding' value='<%= !maker ? "" : maker.date_of_founding.toISOString().substring(0, 10) %>'>
+                <button type='submit'>Submit</button>
+            </label>
+            <% if (errors) { %>
+                <h3>Errors:</h3>
+                <ul>
+                    <% for (let error of errors) { %>
+                    <li><%= error.msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

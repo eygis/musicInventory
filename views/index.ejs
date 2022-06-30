@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <p><%= title %> Inventory Management System</p>
+      <ul>
+        <li>Instrument Types: <%= data.instrument_count.length %></li>
+        <li>Individual Instruments: <%= data.instance_count %></li>
+        <li>Makers: <%= data.maker_count %></li>
+        <li>Instrument Families: <%= data.family_count %></li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <h2><%= instrument.type %> - <%= instrument.maker.company_name %></h2>
+      <% if (instrument_instances.length > 0) {%>
+      <ol>
+        <% instrument_instances.forEach(instance => { %>
+        <li><a href='<%= instance.url %>'><%= instance.status %></a></li>
+        <% }) %>
+      </ol>
+      <% } else { %>
+      <p>This instrument has no instances in stock.</p>
+      <% } %>
+      <hr>
+      <p><a href='<%= instrument.url + "/delete"%>'>Delete Instrument</a></p>
+      <p><a href='<%= instrument.url + "/update"%>'>Update Instrument</a></p>
+    </div>
+  </body>
+</html>

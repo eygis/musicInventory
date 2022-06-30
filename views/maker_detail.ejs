@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <h2><%= maker.company_name %></h2>
+      <% if (maker.date_of_founding) { %>
+      <h3>Since <%= maker.date_of_founding_formatted %></h3>
+      <% } %>
+      <% if (maker_instruments.length > 0) {%>
+      <ul>
+        <% maker_instruments.forEach(instrument => { %>
+        <li><a href='<%= instrument.url %>'><%= instrument.type %></a></li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p>This maker has no instruments in stock.</p>
+      <% } %>
+      <hr>
+      <p><a href='<%= maker.url + "/delete"%>'>Delete Maker</a></p>
+      <p><a href='<%= maker.url + "/update"%>'>Update Maker</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./sidebar') %>
+    <div id="main">
+      <h1><%= title %></h1>
+      <ul>
+        <% maker_list.forEach(maker => { %>
+            <li><a href='<%= maker.url %>'><%= maker.company_name %></a></li>
+        <% }); %>     
+      </ul>
+    </div>
+  </body>
+</html>
